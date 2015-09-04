@@ -1,0 +1,12 @@
+<h1>Add a brand to $store.getName()</h1>
+
+<form action="/brands" method="post">
+  <input id="storeId" name="storeId" type="hidden" value="$store.getId()">
+
+  <div class="form-group">
+    <label for="brandname">Brand</label>
+    <input id="brandname" name="brandname" type="text" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-success">Add brand</button>
+</form>

@@ -1,0 +1,44 @@
+<h1>Brands</h1>
+
+#if ($editBrand)
+    <form action="/brands/$editBrand.getId()/edit" method="post">
+      <label for="brandname">Edit brand:</label>
+      <input id="brandname" name="brandname" type="text" value="$editBrand.getBrandName()">
+      <button type="submit" class="btn btn-primary">Edit brand</button>
+    </form>
+#else
+    <p>Add a new brand:</p>
+
+    <form action="/brands" method="post">
+      <label for="brandname">Brand Name</label>
+      <input id="brandname" name="brandname" type="text">
+      <button type="submit" class="btn btn-primary">Add brand</button>
+    </form>
+    <br>
+
+    <table border="1" class="table table-striped">
+      <th>Current brands:</th>
+      <th>Stores:</th>
+      <th>Edit:</th>
+      <th>Delete:</th>
+      <tbody>
+      #foreach ($brand in $brands)
+      <tr>
+        <td><a href="/brands/$brand.getId()">$brand.getBrandName()</a></td>
+          <td>
+            #if($brand.getStores())
+              <ul>
+                #foreach($store in $brand.getStores())
+                  <li><a href="/stores/$store.getId()">$store.getName()</a></li>
+                #end
+              </ul>
+            #end
+          </td>
+          <td><a href="/brands/$brand.getId()/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+          <td><a href="/brands/$brand.getId()/delete"><span class="glyphicon glyphicon-trash"></span></a></td>
+        </tr>
+        #end
+    </tbody>
+  </table>
+  #end
+  <br>
