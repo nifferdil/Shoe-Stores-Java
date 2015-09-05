@@ -20,7 +20,7 @@ In PSQL:
 
 CREATE DATABASE shoe_stores;
 \c shoe_stores
-CREATE TABLE brands (id serial PRIMARY KEY, brand_name varchar);
+CREATE TABLE brands (id serial PRIMARY KEY, brandname varchar);
 CREATE TABLE stores (id serial PRIMARY KEY, name varchar);
 CREATE TABLE stores_brands (id serial PRIMARY KEY, store_id int, brand_id int);
 CREATE DATABASE shoe_stores_test WITH TEMPLATE shoe_stores;
