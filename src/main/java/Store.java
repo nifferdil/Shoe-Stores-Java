@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Store {
   private int id;
   private String name;
-  
+
   public int getId() {
     return id;
   }

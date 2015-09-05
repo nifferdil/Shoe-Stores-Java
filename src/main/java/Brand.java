@@ -68,10 +68,10 @@ public class Brand {
   public static Brand find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM brands where id=:id";
-      Brand book = con.createQuery(sql)
+      Brand brand = con.createQuery(sql)
       .addParameter("id", id)
       .executeAndFetchFirst(Brand.class);
-      return book;
+      return brand;
     }
   }
 
@@ -95,8 +95,8 @@ public class Brand {
       ArrayList<Store> stores = new ArrayList<Store>();
 
       for (Integer storeId : storeIds) {
-        String bookQuery = "Select * From stores WHERE id = :storeId";
-        Store store = con.createQuery(bookQuery)
+        String brandQuery = "Select * From stores WHERE id = :storeId";
+        Store store = con.createQuery(brandQuery)
         .addParameter("storeId", storeId)
         .executeAndFetchFirst(Store.class);
         stores.add(store);
@@ -112,9 +112,9 @@ public class Brand {
       .addParameter("id", id)
       .executeUpdate();
 
-      String joinDeleteQuery = "DELETE FROM stores_brands WHERE brand_id = :bookId";
+      String joinDeleteQuery = "DELETE FROM stores_brands WHERE brand_id = :brandId";
       con.createQuery(joinDeleteQuery)
-      .addParameter("bookId", this.getId())
+      .addParameter("brandId", this.getId())
       .executeUpdate();
     }
   }
